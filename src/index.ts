@@ -8,28 +8,70 @@ interface Livro {
 
 const livros: Livro[] = []
 
-const harrypotter: Livro = {
-  id: 1,
-  titulo: "Harry Potter e a Pedra Filosofal",
-  autor: "J.K. Rowling",
-  ano: 1997,
-  disponivel: true
+function adicionarLivro(livro: Livro): void {
+  livros.push(livro)
 }
 
-console.log(harrypotter)
+adicionarLivro({
+    id: 1,
+    titulo: "Harry Potter e a Pedra Filosofal",
+    autor: "J.K. Rowling",
+    ano: 1997,
+    disponivel: true
+})
+adicionarLivro({
+    id: 2,
+    titulo: "O Hobbit",
+    autor: "J.R.R. Tolkien",
+    ano: 1937,
+    disponivel: true
+})
+adicionarLivro({
+    id: 3,
+    titulo: "Verity",
+    autor: "Colleen Hoover",
+    ano: 2020,
+    disponivel: true
+})
+adicionarLivro({
+    id: 4,
+    titulo: "A Revolução dos Bichos",
+    autor: "George Orwell",
+    ano: 1945,
+    disponivel: true
+})
+adicionarLivro({
+    id: 5,
+    titulo: "Orgulho e Preconceito",
+    autor: "Jane Austen",
+    ano: 1813,
+    disponivel: true
+})
 
-//cria func add
+function emprestarLivro(id: number): void {
+  const livro = livros.find(l => l.id === id)
 
-//cria func listar
+  if (!livro) {
+    console.log("Livro não encontrado")
+    return
+  }
 
-//cria func emprestar
+  if (!livro.disponivel) {
+    console.log("Livro já está emprestado")
+    return
+  }
 
-//cria array com 5 livros
+  livro.disponivel = false
+  console.log("Livro emprestado com sucesso")
+}
 
-//add os 5 livros (chamando a funcao add)
+function listarLivros(): void {
+  console.log(livros)
+}
 
-//lista os livros (chamando a funcao listar)
+listarLivros()
 
-//empresta um livro (chamando a funcao emprestar)
+emprestarLivro(2)
 
-//lista os livros (chamando a funcao listar)
+listarLivros()
+
